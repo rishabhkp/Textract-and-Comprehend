@@ -1,0 +1,57 @@
+# What is Amazon Textract?
+
+Amazon Textract is a machine learning-based OCR service that performs document analysis to detect and extract text, structured data, such as fields of interest and their values, and tables from images and scans of documents. Amazon Textract's machine learning models have been trained on millions of documents so that virtually any document type is automatically recognized and processed for text extraction. 
+Textract is HIPAA-eligible
+Distinguishing Features that makes Textract both accurate and customizable
+Confidence Score: When information is extracted from documents, the service returns a confidence score for each element it identifies so that the user can make informed decisions about how he/she wants to use the results. 
+For instance, if the user is extracting information from tax documents, he/she can set custom rules to flag any extracted information with a confidence score lower than 95%. 
+
+Bounding Box Co-ordinates: All extracted data are returned with bounding box coordinates, which is a rectangular frame that fully encompasses each piece of data identified so that the user can quickly identify where a word or number appears on a document. 
+A bounding box (BoundingBox) has the following properties:
+Height – The height of the bounding box as a ratio of the overall document page height
+Left – The X coordinate of the top-left point of the bounding box as a ratio of the overall document page width
+Top – The Y coordinate of the top-left point of the bounding box as a ratio of the overall document page height
+Width – The width of the bounding box as a ratio of the overall document page width
+The following diagram shows the range of a document page that each BoundingBox property covers: 
+
+
+
+
+To display the bounding box with the correct location and size, the user will have to multiply the BoundingBox values by the document page width or height (depending on the value you want) to get the pixel values.
+
+How to access AWS Textract?
+Amazon Textract provides both synchronous and asynchronous API actions to extract document text and analyze the document text data. Synchronous APIs can be used for single-page documents and low latency use cases such as mobile capture. Asynchronous APIs can be used for multi-page documents such as PDF documents with thousands of pages. Amazon Textract
+
+Use cases for Amazon Textract
+Text detection from documents: Textract can detect raw texts (lines and words)- not handwritten
+
+Multi-column detection and reading order: Traditional OCR solutions read left to right, do not detect multiple columns and end up generating incorrect reading orders for multi-column documents. In addition to detecting text, Amazon Textract provides additional geometry information that can be used to detect multiple columns and print the text in reading order
+
+Natural language processing and document classification: After the text is extracted from the documents, users can use Amazon Comprehend to detect sentiment, entities, key phrases, syntax, and topics. One can also train Amazon Comprehend to detect custom entities based on your business domain. These insights can then be used to classify documents, automate business process workflows, and ensure compliance
+
+Natural language processing for medical documents: User can employ Amazon Comprehend Medical on top of extracted texts to extract medical entities, such as medical condition (Indicates a state of health, whether well or ill; a condition conferring illness might be further classified as a disease or a disorder), medication, dosage, strength, and protected health information (PHI examples: Name, Age, and Medical Record Number)
+
+Document translation: User can employ Amazon Textract along with Amazon Translate to extract text and data and then translate them into other languages
+
+Form extraction: Textract can provide the inputs required to automatically process forms without human intervention
+
+Compliance control with document redaction:  Textract can provide the inputs required to automatically process forms without human intervention. For example, a bank could write code to read PDFs of loan applications. The information contained in the document could be used to initiate all of the necessary background and credit checks to approve the loan so that customers can get instant results for their application rather than having to wait several days for manual review and validation.
+Because Amazon Textract identifies data types and forms labels automatically, AWS helps secure infrastructure so that the user can maintain compliance with information controls. For example, an insurer could use Amazon Textract to feed a workflow that automatically redacts (censor or obstruct) personally identifiable information (PII) for review before archiving claim forms. Amazon Textract recognizes the important fields that require protection
+
+Table extraction and processing: Amazon Textract can detect tables and their content
+
+Search and discovery: Extracting structured data from documents and creating a smart index using Amazon Elasticsearch1 Service (Amazon ES) allows users to search through millions of documents quickly. For example, a mortgage company could use Amazon Textract to process millions of scanned loan applications in a matter of hours and have the extracted data indexed in Amazon ES. This would allow them to create search experiences like searching for loan applications where the applicant name is John Doe or searching for contracts where the interest rate is 2 percent
+
+PDF document processing
+
+
+
+
+Limitations of Amazon Textract
+The maximum input document image (JPEG/PNG) size is 5 MB
+The maximum input PDF file size is 500 MB	
+The maximum number of pages in a PDF file is 3000
+The maximum PDF media size for the height and width dimensions is 40 inches or 2880 points
+The minimum height for text to be detected is 15 pixels. At 150 DPI, this would be equivalent to 8-pt font.			
+Documents can be rotated a maximum of +/- 10% from the vertical axis. Text has to be aligned horizontally within the document.			
+Amazon Textract doesn't support the detection of handwriting.	
